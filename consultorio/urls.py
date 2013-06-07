@@ -1,12 +1,12 @@
 from django.conf.urls import patterns, include, url
-
+from historiaclinica.views import PacienteList
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'consultorio.views.home', name='home'),
+    url(r'^$', PacienteList.as_view(), name='home'),
     # url(r'^consultorio/', include('consultorio.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
