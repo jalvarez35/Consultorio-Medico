@@ -1,2 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
 
-hola mundo
+<a class="" href="{% url 'paciente_add' %}" >Adicionar Paciente</a>
+<table class='table'>
+   <thead>
+      <tr class="warning">
+          <td>
+            Nombre
+          </td>
+          <td>
+            Eliminar
+          </td>
+      </tr>
+   </thead>
+<tbody> 
+{% for paciente in object_list %}
+<tr class="{% cycle 'warning' 'info' 'error' 'success' %}">
+  <td>
+     <a href="{{ paciente.direccion_para_actualizar }}"
+      data-nombre="{{ paciente.nombre }}" data-primer_pellido="{{ paciente.primer_pellido }}"
+      >{{ paciente.nombre }}</a>    
+  </td>   
+  <td>
+    <a href="{{ paciente.direccion_para_eliminar }}">
+    Delete
+    </a>
+    
+  </td>
+  </tr>
+
+     </tr>
+   {% endfor %}
+ </tbody>
+</table>
+{% endblock %}

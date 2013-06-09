@@ -1,8 +1,8 @@
 from django.db import models
+from django.core.urlresolvers import reverse_lazy
 
 class Paciente(models.Model):
     nombre = models.CharField(max_length=30)
-    apellido = models.CharField(max_length=30)
     primer_pellido = models.CharField(max_length=30)
     segundo_apellido = models.CharField(max_length=30)
     fecha_nacimiento = models.DateTimeField(max_length=30)
@@ -26,6 +26,12 @@ class Paciente(models.Model):
         ('F', 'Femenino'),
         )
     sexo = models.CharField(max_length=1, choices=SEXO_CHOICES, default='M')
+    
+    def direccion_para_actualizar(self):
+        return reverse_lazy('paciente_update', args=[self.pk])
+
+    def direccion_para_eliminar(self):
+        return reverse_lazy('paciente_delete', args=[self.pk])
 
 class HistoriaClinica(models.Model):
     fecha_toma_examen = models.DateTimeField(max_length=30)
