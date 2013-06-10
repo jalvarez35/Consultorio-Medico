@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a class="" href="{% url 'historiaclinica_add' %}" >Adicionar Historia Clinica</a>
+<table class='table'>
+   <thead>
+      <tr class="warning">
+          <td>
+            Nombre
+          </td>
+          <td>
+            Eliminar
+          </td>
+      </tr>
+   </thead>
+<tbody> 
+{% for historiaclinica in object_list %}
+<tr class="{% cycle 'warning' 'info' 'error' 'success' %}">
+  <td>
+     <a href="{{ historiaclinica.direccion_para_actualizar }}"
+      data-nombre="{{ historiaclinica.nombre }}" data-primer_pellido="{{ historiaclinica.primer_pellido }}"
+      >{{ historiaclinica.nombre }}</a>    
+  </td>   
+  <td>
+    <a href="{{ historiaclinica.direccion_para_eliminar }}">
+    Delete
+    </a>
+    
+  </td>
+  </tr>
+
+     </tr>
+   {% endfor %}
+ </tbody>
+</table>
+{% endblock %}

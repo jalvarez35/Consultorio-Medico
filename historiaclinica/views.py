@@ -36,7 +36,7 @@ class HistoriaClinicaCreate(CreateView):
     template_name = 'historiaclinica_create.html'
     success_url = reverse_lazy('historiaclinica_list')
 
-class HistoriaClinicateUpdate(UpdateView):
+class HistoriaClinicaUpdate(UpdateView):
     model = HistoriaClinica
     template_name = 'historiaclinica_create.html'
     success_url = reverse_lazy('historiaclinica_list')
@@ -45,3 +45,4 @@ class HistoriaClinicaDelete(DeleteView):
     model = HistoriaClinica
     template_name = 'historiaclinica_delete.html'
     success_url = reverse_lazy('historiaclinica_list')
+
