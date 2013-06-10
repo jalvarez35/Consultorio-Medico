@@ -38,23 +38,16 @@ class Paciente(models.Model):
         return "%s %s" % (self.nombre, self.primer_pellido)
 
 class HistoriaClinica(models.Model):
+    paciente = models.ForeignKey(Paciente, related_name='historias')
     fecha_toma_examen = models.DateTimeField(max_length=30)
-    cuadro_clinico = models.CharField(max_length=1000)
-    antecedentes_clinico = models.CharField(max_length=1000)
-    hallazgos_examen = models.CharField(max_length=1000)
-    diagnostico = models.CharField(max_length=1000)
-    observaciones = models.CharField(max_length=1000)
     talla = models.FloatField(max_length=30)
     peso = models.FloatField(max_length=30)
-    paciente = models.ForeignKey(Paciente, related_name='historias')
-    motivo_consulta = models.CharField(max_length=1000)
-    
-    def __unicode__(self):
-        return self.paciente.nombre
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, unique=True)
-    bio = models.TextField(null=True)
+    motivo_consulta = models.TextField(null=False)
+    cuadro_clinico = models.TextField(null=False)
+    antecedentes_clinico = models.TextField(null=False)
+    hallazgos_examen = models.TextField(null=False)
+    diagnostico = models.TextField(null=False)
+    observaciones = models.TextField(null=False)
     
     def direccion_para_actualizar(self):
         return reverse_lazy('historiaclinica_update', args=[self.pk])
@@ -62,6 +55,13 @@ class UserProfile(models.Model):
     def direccion_para_eliminar(self):
         return reverse_lazy('historiaclinica_delete', args=[self.pk])
 
+    def __unicode__(self):
+        return self.paciente.nombre
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, unique=True)
+    bio = models.TextField(null=True)
+    
     def __unicode__(self):
         return "%s's profile" % self.user
 

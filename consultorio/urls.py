@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'paciente/(?P<pk>\d+)/$', PacienteUpdate.as_view(), name='paciente_update'),
     url(r'paciente/(?P<pk>\d+)/delete/$', PacienteDelete.as_view(), name='paciente_delete'),
     
-    url(r'^$', HistoriaClinicaList.as_view(), name='historiaclinica_list'),
+    url(r'^historiaclinica/list$', HistoriaClinicaList.as_view(), name='historiaclinica_list'),
     url(r'^historicaclinica/add/$', HistoriaClinicaCreate.as_view(), name='historiaclinica_add'),
     url(r'historiaclinica/(?P<pk>\d+)/$', HistoriaClinicaUpdate.as_view(), name='historiaclinica_update'),
     url(r'historiaclinica/(?P<pk>\d+)/delete/$', HistoriaClinicaDelete.as_view(), name='historiaclinica_delete'),

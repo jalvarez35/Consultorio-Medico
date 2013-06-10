@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Formulario de Registro de Historias Clinicas  </h1>
+<form class="form-horizontal" action="." method="POST">
+    {% for field in form %}
+    <div class="control-group {% if field.errors %}error{% endif %}" >
+        <label class="control-label">
+        {{ field.label }}</label>
+        <div class="controls">
+            {{ field }}
+            <span class="help-inline">{{ field.errors }}</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% csrf_token %}
+      <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Guardar</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
