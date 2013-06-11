@@ -15,7 +15,8 @@
     {% csrf_token %}
       <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn">Guardar</button>
+            <button type="submit" class="btn-success btn-large btn">Guardar</button>
+            <a href="{% url 'historiaclinica_list' %}" class="btn btn-primary">Cancelar</a>
         </div>
     </div>
 </form>
